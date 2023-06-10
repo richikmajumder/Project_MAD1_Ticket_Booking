@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authorization Failed</title>
+</head>
+<body>
+  You are not authorised to view this page.<br>
+  {% if current_user.is_admin %}
+  <a href="{{url_for('admin_dashboard')}}">Return to admin dashboard</a>
+  {% elif not current_user.is_admin %}
+  <a href="{{url_for('user_login')}}">Return to user dashboard</a>
+  {% else %}
+  <a href="/">Home</a>
+  {% endif %}
+</body>
+</html>

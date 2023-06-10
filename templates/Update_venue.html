@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Update venue</title>
+    <style>
+    table,tr,td,th{border:1px solid;border-collapse: collapse;padding: 10px;}
+    tr:nth-child(even){background: #e3e3e3;}
+    th{background: #0f5f73;color: white;}
+    </style>
+  </head>
+  <body>
+    <h1>Venue list</h1>
+    <table id = "update-venues">
+      <tr>
+        <th>Serial No</th>
+        <th>Name</th>
+        <th>Place</th>
+        <th>Location</th>
+        <th>Capacity</th>
+        <th>Action</th>
+        
+      </tr>
+
+      {% set count=namespace(value=1) %}
+      {% for row in venue %}
+      <tr>
+        <td>{{count.value}}</td>
+        <td><a href="/{{row['id']}}/show/update">{{row['name']}}</a></td>
+        <td>{{row['place']}}</td>
+        <td>{{row['location']}}</td>
+        <td>{{row['capacity']}}</td>
+        <td><form method="GET"
+                action="{{ url_for('venue_updation', id=row['id']) }}">
+            <input type="submit" value="Update"></form>
+          <br>
+        <form method="GET"
+                action="{{ url_for('venue_removal', id=row['id']) }}">
+            <input type="submit" value="Remove"
+                onclick="return confirm('Are you sure you want to delete this venue?')">
+        </form></td>
+      </tr>
+       
+      {% set count.value=count.value+1 %}
+      {% endfor %}
+
+    </table>
+    <a href="/venue/creation" type="button">Create a new venue</a><br>
+    <a href="/admin/dashboard" type="button">Back to admin dashboard</a>
+  </body>
+</html>

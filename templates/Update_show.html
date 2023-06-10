@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Update Show</title>
+    <style>
+    table,tr,td,th{border:1px solid;border-collapse: collapse;padding: 10px;}
+    tr:nth-child(even){background: #e3e3e3;}
+    th{background: #0f5f73;color: white;}
+    </style>
+  </head>
+  <body>
+    <h1><center>Show list</center><br>{{venue['name']}} {{venue['place']}}, {{venue['location']}}</h1>
+    <table id = "update-shows">
+      <tr>
+        <th>Serial No</th>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Tags</th>
+        <th>Show Time</th>
+        <th>Ticket Price</th>
+        <th>Ticket's left</th>
+        <th>Action</th>
+      </tr>
+
+      {% set count=namespace(value=1) %}
+      {% for linked in link %}
+      {% for row in show if row.id==linked.show_id %}
+      <tr>
+        <td>{{count.value}}</td>
+        <td>{{row['name']}}</td>
+        <td>{{row['rating']}}</td>
+        <td>{{row['tags']}}</td>
+
+        <td>{{linked['time']}}</td>
+        <td>{{linked['ticket_price']}}</td>
+        <td>{{linked['tickets_left']}}</td>
+        <td>
+        <form method="GET"
+                action="{{ url_for('show_updation', sid=linked.show_id, vid=linked.venue_id) }}">
+            <input type="submit" value="Update "></form><br>
+        <form method="GET"
+                action="{{ url_for('show_delink', sid=linked.show_id, vid=linked.venue_id) }}">
+            <input type="submit" value="Delink Show" onclick="return confirm('Are you sure you want to delink this show ?')"></form></td>
+      </tr>
+      {% set count.value=count.value+1 %}
+      {% endfor %}
+      {% endfor %}
+    </table>
+    <a href="/show/{{venue_id}}/create" type="button">Add Show</a>
+    <br>
+    <a href="/admin/dashboard" type="button">Back to admin dashboard</a>
+    
+  </body>
+</html>

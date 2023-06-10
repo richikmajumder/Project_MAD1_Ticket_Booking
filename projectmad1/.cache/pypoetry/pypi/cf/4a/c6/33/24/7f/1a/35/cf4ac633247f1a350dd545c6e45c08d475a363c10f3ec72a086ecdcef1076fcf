@@ -1,0 +1,1 @@
+9999999999{"name": "Flask-Login", "version": "0.6.2", "summary": "User authentication and session management for Flask.", "platform": null, "requires_dist": ["Flask (>=1.0.4)", "Werkzeug (>=1.0.1)"], "requires_python": ">=3.7", "files": [], "_cache_version": "1.0.0"}

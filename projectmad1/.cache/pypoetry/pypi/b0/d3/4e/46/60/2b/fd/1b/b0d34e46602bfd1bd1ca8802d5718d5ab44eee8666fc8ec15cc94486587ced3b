@@ -1,0 +1,1 @@
+9999999999{"name": "db", "version": "0.1.1", "summary": "Databases for Humans", "platform": "UNKNOWN", "requires_dist": ["antiorm"], "requires_python": null, "files": [], "_cache_version": "1.0.0"}

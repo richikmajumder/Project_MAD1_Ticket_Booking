@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    table,tr,td,th{border:1px solid;border-collapse: collapse;padding: 10px;}
+    tr:nth-child(even){background: #e3e3e3;}
+    th{background: #0f5f73;color: white;}
+  </style>  
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search results</title>
+</head>
+<body>
+  <div>
+  <h1>Show list</h1>
+    <table id = "all-shows">
+      <tr>
+        <th>Serial No</th>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Tags</th>        
+      </tr>
+
+      {% set count=namespace(value=1) %}
+      {% for row in show_rating %}
+      <tr>
+        <td>{{count.value}}</td>
+        <td><a href="/show/{{row.id}}">{{row['name']}}</a></td>
+        <td>{{ "%.2f"|format(row['rating'])}}</td>
+        <td>{{row['tags']}}</td>
+      </tr>
+      {% set count.value=count.value+1 %}
+      {% endfor %}
+      </table>
+</div>
+  <a href="/">Back to homepage</a>
+</body>
+</html>

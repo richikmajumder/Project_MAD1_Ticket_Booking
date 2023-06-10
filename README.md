@@ -1,1 +1,1 @@
-Added a line from my Mac
+This application is developed using python based web framework Flask and Flask_SQLAlchemy is used for creating the database. Flask wtforms and bcrypt is used for creating forms and hashing passwords. The necessary imports are present in requirements.txt file.

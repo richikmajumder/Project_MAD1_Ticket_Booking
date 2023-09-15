@@ -79,4 +79,4 @@ websockets==10.3
 Werkzeug==2.2.2
 WTForms==3.0.1
 zipp==3.8.1
-flask_bcrypt
+flask_bcrypt==1.0.1
